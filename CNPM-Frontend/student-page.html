@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/student-page.css" />
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="./assets/img/logo.png" alt="Logo Trường" />
+        </div>
+        <hr class="divider" />
+        <div class="profile">
+            <img src="./assets/img/default-profile.png" alt="Avatar" />
+            <div class="info">
+                <h6 id="student-name">Trần Xuân Huyền</h6>
+                <h6 id="student-id">48.01.104.123</h6>
+                <p>Học Sinh</p>
+            </div>
+        </div>
+        <hr class="divider" />
+        <nav class="nav">
+            <p>CHỨC NĂNG</p>
+            <div class="nav-item active" id="personal-info-btn">
+                <span>Thông tin cá nhân</span>
+            </div>
+            <div class="nav-item" id="attendance-history-btn">
+                <span>Lịch sử điểm danh</span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="topbar">
+            <h1>TRƯỜNG THPT BÙI THỊ XUÂN</h1>
+            <div class="logout-btn" id="logout-btn">
+                <span>Đăng xuất</span>
+            </div>
+        </div>
+        <div class="content">
+            <div id="personal-info" class="section">
+                <h2>THÔNG TIN CÁ NHÂN</h2>
+                <table class="info-table">
+                    <tr>
+                        <th>Mã học sinh</th>
+                        <td id="student-id-info">48.01.104.123</td>
+                    </tr>
+                    <tr>
+                        <th>Họ tên</th>
+                        <td id="student-name-info">Trần Xuân Huyền</td>
+                    </tr>
+                    <tr>
+                        <th>Lớp</th>
+                        <td id="class-id">12A1</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày sinh</th>
+                        <td id="dob">26/10/2004</td>
+                    </tr>
+                    <tr>
+                        <th>Giới tính</th>
+                        <td id="gender">Nữ</td>
+                    </tr>
+                    <tr>
+                        <th>Số điện thoại</th>
+                        <td id="phone">0123456789</td>
+                    </tr>
+                    <tr>
+                        <th>Họ tên cha</th>
+                        <td id="father-name">Nguyễn Văn A</td>
+                    </tr>
+                    <tr>
+                        <th>Họ tên mẹ</th>
+                        <td id="mother-name">Nguyễn Thị B</td>
+                    </tr>
+                    <tr>
+                        <th>Quê quán</th>
+                        <td id="hometown">Tỉnh Bình Định</td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+            <div id="attendance-history" class="section hidden">
+                <h2>LỊCH SỬ ĐIỂM DANH</h2>
+                <div class="dropdown-container">
+                    <div class="item">
+                        <label for="subject-dropdown">Môn học: </label>
+                        <select id="subject-dropdown">
+                            <!-- Môn học ghi ở đây -->
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="week-dropdown">Tuần:</label>
+                        <select id="week-dropdown">
+                            <option value="1">Tuần 1</option>
+                            <option value="2">Tuần 2</option>
+                            <option value="3">Tuần 3</option>
+                            <option value="4">Tuần 4</option>
+                            <option value="5">Tuần 5</option>
+                            <option value="6">Tuần 6</option>
+                            <option value="7">Tuần 7</option>
+                            <option value="8">Tuần 8</option>
+                            <option value="9">Tuần 9</option>
+                            <option value="10">Tuần 10</option>
+                            <option value="11">Tuần 11</option>
+                            <option value="12">Tuần 12</option>
+                            <option value="13">Tuần 13</option>
+                            <option value="14">Tuần 14</option>
+                            <option value="15">Tuần 15</option>
+                            <option value="16">Tuần 16</option>
+                            <option value="17">Tuần 17</option>
+                            <option value="18">Tuần 18</option>
+                            <option value="19">Tuần 19</option>
+                            <option value="20">Tuần 20</option>
+                            <option value="21">Tuần 21</option>
+                            <option value="22">Tuần 22</option>
+                            <option value="23">Tuần 23</option>
+                            <option value="24">Tuần 24</option>
+                            <option value="25">Tuần 25</option>
+                            <option value="26">Tuần 26</option>
+                            <option value="27">Tuần 27</option>
+                            <option value="28">Tuần 28</option>
+                            <option value="29">Tuần 29</option>
+                            <option value="30">Tuần 30</option>
+                            <option value="31">Tuần 31</option>
+                            <option value="32">Tuần 32</option>
+                            <option value="33">Tuần 33</option>
+                            <option value="34">Tuần 34</option>
+                            <option value="35">Tuần 35</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="semester-dropdown">Học kỳ:</label>
+                        <select id="semester-dropdown">
+                            <option value="HK01">Học kỳ 1</option>
+                            <option value="HK02">Học kỳ 2</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label for="year-dropdown">Năm học:</label>
+                        <select id="year-dropdown">
+                            <!-- year  ghi ở đây -->
+                        </select>
+                    </div>
+                </div>
+
+                <table class="history-table">
+                    <thead id="attendance-history-table-head">
+                        <tr>
+                            <th>Ngày</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-history-table-body">
+                        <!-- Lịch sử điểm danh sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+	<div id="toast" class="toast"></div>
+    <script src="./assets/js/student-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+* {
+	font-family: "Inter", sans-serif;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-color: #f3f6fa;
+}
+
+.login-container {
+	text-align: center;
+	background: white;
+	padding: 30px 40px;
+	border-radius: 10px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+}
+
+/* Header */
+.login-header {
+	margin-bottom: 20px;
+}
+
+.login-header img {
+	width: 160px;
+}
+
+/* Nhóm form */
+.form-group {
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+	color: #555;
+	font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+	width: 100%;
+	padding: 10px 40px 10px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	outline: none;
+	font-weight: 500;
+}
+
+/* Container của ô mật khẩu và biểu tượng con mắt */
+.password-container {
+	position: relative;
+}
+
+/* Biểu tượng con mắt */
+.toggle-password {
+	position: absolute;
+	top: 50%;
+	right: 10px; /* Khoảng cách từ mép phải */
+	transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+	cursor: pointer;
+	width: 24px; /* Kích thước icon */
+	height: 24px;
+}
+.hidden {
+	display: none;
+  }
+  
+/* Định dạng hình ảnh con mắt */
+.toggle-password img {
+	width: 100%;
+	height: 100%;
+}
+
+/* Nút Đăng nhập */
+button[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+/* Liên kết quên mật khẩu */
+.forgot-password {
+	display: block;
+	margin-top: 15px;
+	color: #007bff;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.forgot-password:hover {
+	text-decoration: underline;
+}
+
+/* Định dạng dropdown menu */
+.form-group select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	outline: none;
+	font-weight: 500;
+	background-color: white;
+	appearance: none;
+	-webkit-appearance: none;
+	cursor: pointer;
+}
+
+/* Mũi tên xuống trong dropdown */
+.form-group select:focus {
+	border-color: #007bff;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Toast Notification */
+.toast {
+	position: fixed;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #28a745; /* Màu xanh cho thành công */
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s, visibility 0.4s;
+}
+
+.toast.show {
+	opacity: 1;
+	visibility: visible;
+	transition: 0.1 ease-in-out;
+}
+
+.toast-error {
+	background-color: #dc3545; /* Màu đỏ cho lỗi */
+}
+
+.toast-success {
+	background-color: #28a745; /* Màu xanh cho thành công */
+}
+/* Định dạng form đổi mật khẩu */
+#forgotPasswordFormContainer {
+	text-align: center;
+	background: white;
+	padding: 30px 40px;
+	border-radius: 10px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto; /* Căn giữa */
+}
+
+/* Định dạng nhãn và ô nhập liệu */
+#forgotPasswordFormContainer .form-group label {
+	display: block;
+	margin-bottom: 5px;
+	color: #555;
+	font-weight: bold;
+}
+
+#forgotPasswordFormContainer .form-group input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	outline: none;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+/* Định dạng nút đổi mật khẩu */
+#forgotPasswordFormContainer button[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#forgotPasswordFormContainer button[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+/* Liên kết quay lại đăng nhập */
+#forgotPasswordFormContainer .forgot-password {
+	display: block;
+	margin-top: 15px;
+	color: #007bff;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+#forgotPasswordFormContainer .forgot-password:hover {
+	text-decoration: underline;
+}

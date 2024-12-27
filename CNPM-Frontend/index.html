@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Điểm Danh Học Sinh</title>
+    <link rel="stylesheet" href="./assets/css/login-page.css" />
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loginFormContainer" class="login-container">
+      <div class="login-header">
+        <img src="./assets/img/logo.png" alt="Logo Trường" class="logo" />
+      </div>
+      <form id="loginForm" onsubmit="return login(event)">
+        <div class="form-group">
+          <label for="role">Vai trò</label>
+          <select id="role" required>
+            <option value="" disabled selected>Chọn vai trò</option>
+            <option value="HocSinh">Học sinh</option>
+            <option value="GiaoVien">Giáo viên</option>
+            <option value="QuanTriVien">Quản trị viên</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="username">Tên người dùng</label>
+          <input type="text" id="username" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <div class="password-container">
+            <input type="password" id="password" required />
+            <span class="toggle-password" onclick="togglePasswordVisibility('password', 'eye-icon')">
+              <img id="eye-icon" src="./assets/img/eye-crossed.svg" alt="eye-crossed" />
+            </span>
+          </div>
+        </div>
+        <button type="submit">Đăng Nhập</button>
+        <p id="errorMessage" class="error-message"></p>
+        <!-- Sửa onclick -->
+        <a href="#" class="forgot-password" onclick="showForgotPasswordForm()">Quên mật khẩu?</a>
+      </form>
+    </div>
+
+    <!-- Form Quên Mật Khẩu -->
+    <div id="forgotPasswordFormContainer" class="hidden">
+      <div class="login-header">
+        <img src="./assets/img/logo.png" alt="Logo Trường" class="logo" />
+      </div>
+      <form id="forgotPasswordForm" onsubmit="return resetPassword(event)">
+        <div class="form-group">
+          <label for="studentId">Mã vai trò</label>
+          <input type="text" id="studentId" required />
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Số điện thoại</label>
+          <input type="text" id="phoneNumber" required />
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Mật khẩu mới</label>
+          <div class="password-container">
+            <input type="password" id="newPassword" required />
+            <span class="toggle-password" onclick="togglePasswordVisibility('newPassword', 'eye-icon-new')">
+              <img id="eye-icon-new" src="./assets/img/eye-crossed.svg" alt="eye-crossed" />
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Nhập lại mật khẩu mới</label>
+          <div class="password-container">
+            <input type="password" id="confirmPassword" required />
+            <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', 'eye-icon-confirm')">
+              <img id="eye-icon-confirm" src="./assets/img/eye-crossed.svg" alt="eye-crossed" />
+            </span>
+          </div>
+        </div>
+        <button type="submit">Đổi Mật Khẩu</button>
+        <p id="resetErrorMessage" class="error-message"></p>
+        <a href="#" class="forgot-password" onclick="showLoginForm()">Quay lại đăng nhập</a>
+      </form>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="./assets/js/login-page.js"></script>
+  </body>
+</html>

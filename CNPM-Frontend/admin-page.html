@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Trang Quản Lý Tài Khoản</title>
+		<link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./assets/css/admin-page.css" />
+		<link rel="stylesheet" href="./assets/css/admin_styles.css">
+	</head>
+	<body>
+		<div class="sidebar">
+			<div class="logo">
+				<img src="./assets/img/logo.png" alt="Logo Trường" />
+			</div>
+			<hr class="divider" />
+			<div class="profile">
+				<img src="./assets/img/default-profile.png" alt="Avatar" />
+				<div class="info">
+					<h6></h6>
+					<p>Quản trị viên</p>
+				</div>
+			</div>
+			<hr class="divider" />
+			<nav class="nav">
+				<p>CHỨC NĂNG</p>
+				<div class="nav-item active" id="personal-btn">
+					<span>Quản lí tài khoản</span>
+				</div>
+			</nav>
+		</div>
+
+		<div class="container">
+			<div class="topbar">
+				<h1>TRƯỜNG THPT BÙI THỊ XUÂN</h1>
+				<div class="logout-btn" id="logout-btn">
+					<span>Đăng xuất</span>
+				</div>
+			</div>
+			<div class="content">
+				<div id="personal" class="section">
+					<form id="search-account-form">
+						<div class="search-container">
+							<input type="text" id="account-id" placeholder="Nhập mã tài khoản" required />
+							<div class="button-container">
+								<button id="search-button" type="submit" class="btn">Tìm kiếm</button>
+								<button id="add-account-button" class="btn">Thêm tài khoản</button>
+								<button id="bulk-add-account-button" class="btn">Cấp tài khoản hàng loạt</button>
+							</div>
+							
+						</div>
+					</form>
+						
+					<!-- Kết quả tìm kiếm tài khoản sẽ hiển thị dưới đây -->
+					<div class="table-container" id="table-container">
+						<table class="account-table">
+							<thead>
+								<tr>
+									<th>Mã tài khoản</th>
+									<th>Tên đăng nhập</th>
+									<th>Mật khẩu</th>
+									<th>Loại tài khoản</th>
+									<th>Mã vai trò</th>
+									<th>Hành động</th>
+								</tr>
+							</thead>
+							<tbody id="account-tbody">
+								<!-- Example Row (Placeholder for JS) -->
+								<tr>
+									<td id="result-account-id">-</td>
+									<td id="result-username">-</td>
+									<td id="result-password">-</td>
+									<td id="result-account-type">-</td>
+									<td id="result-role-id">-</td>
+									<td>
+										<div class="action-menu">
+											<button class="dots-button" onclick="toggleMenu(this)">⋮</button>
+											<div class="menu-dropdown" style="display: none;">
+												<a>Cập nhật tài khoản</a>
+												<a>Xóa tài khoản</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<form id="bulk-add-account-form" class="hidden">
+							<label for="bulk-file">Tải lên tài liệu CSV:</label>
+							<input type="file" id="bulk-file" accept=".csv" required />
+							<button type="submit" class="btn">Tải lên</button>
+						</form>				
+					</div>
+<!-- Thêm tài khoản -->
+<div id="addAccount" class="section hidden">
+	<h2>THÊM TÀI KHOẢN</h2>
+	<form id="add-account-form">
+	  <div class="form-group">
+		<label for="add-account-id">Mã tài khoản:</label>
+		<input type="text" id="add-account-id" placeholder="Nhập mã tài khoản" required />
+  
+		<label for="add-username">Tên đăng nhập:</label>
+		<input type="text" id="add-username" placeholder="Nhập tên đăng nhập" required />
+  
+		<label for="add-password">Mật khẩu:</label>
+		<input type="password" id="add-password" placeholder="Nhập mật khẩu" required />
+  
+		<label for="add-account-type">Loại tài khoản:</label>
+		<select id="add-account-type" required>
+		  <option value="HocSinh">Học Sinh</option>
+		  <option value="GiaoVien">Giáo Viên</option>
+		  <option value="QuanTriVien">Quản trị viên</option>
+		</select>
+  
+		<label for="add-role-id">Mã vai trò:</label>
+		<input type="text" id="add-role-id" placeholder="Nhập mã vai trò" required />
+	  </div>
+	  <button type="submit" class="btn">Thêm tài khoản</button>
+	</form>
+  </div>
+  
+  <div id="updateFaceSection" class="section hidden">
+	<h2>Cập nhật khuôn mặt</h2>
+	<form id="updateFaceForm">
+	  <div class="form-group">
+		<input type="text" id="studentId" class ="hidden"required />
+	  </div>
+	  <div class="form-group">
+		<label for="faceImages">Chọn 5 ảnh khuôn mặt:</label>
+		<input type="file" id="faceImages" accept="image/*" multiple required />
+	  </div>
+	  <button type="submit">Cập nhật</button>
+	  <p id="updateFaceError" class="error-message"></p>
+	</form>
+  </div>
+  
+  <!-- Cập nhật tài khoản -->
+  <div id="updateAccount" class="section hidden">
+    <h2>CẬP NHẬT THÔNG TIN TÀI KHOẢN</h2>
+    <form id="update-account-form">
+        <!-- Mã tài khoản -->
+        <div class="form-group">
+            <label for="update-account-id">Mã tài khoản:</label>
+            <input type="text" id="update-account-id" placeholder="Nhập mã số tài khoản" required />
+        </div>
+
+        <!-- Tên đăng nhập -->
+        <div class="form-group">
+            <label for="update-username">Tên đăng nhập:</label>
+            <input type="text" id="update-username" placeholder="Nhập tên đăng nhập" required />
+        </div>
+
+        <!-- Mật khẩu -->
+        <div class="form-group">
+            <label for="update-password">Mật khẩu:</label>
+            <input type="password" id="update-password" placeholder="Nhập mật khẩu mới" required />
+        </div>
+
+        <!-- Loại tài khoản -->
+        <div class="form-group">
+            <label for="update-account-role">Loại tài khoản:</label>
+            <select id="update-account-role" required>
+                <option value="student">Học sinh</option>
+                <option value="teacher">Giảng viên</option>
+                <option value="QuanTriVien">Quản trị viên</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Cập nhật</button>
+    </form>
+</div>
+
+				<div id="updateFace" class="section hidden">
+					<h2>CẬP NHẬT KHUÔN MẶT</h2>
+					<div class="form-group">
+						<!-- <label for="upload-image">Chọn ảnh đại diện:</label> -->
+						<button type="button" class="btn" id="update-btn">
+							Cập nhật
+						</button>
+						<div class="wrapper">
+							<div class="file-upload-container">
+								<input
+									type="file"
+									id="upload-image"
+									class="file-input"
+									accept="image/*"
+								/>
+								<label
+									for="upload-image"
+									class="file-input-label"
+								>
+									<span>Chọn ảnh từ máy tính</span>
+								</label>
+								<div class="file-name" id="file-name"></div>
+								<div
+									class="preview-container"
+									id="preview-container"
+								>
+									<img
+										id="image-preview"
+										src=""
+										alt="Preview"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="deleteAccount" class="section hidden">
+					<h2>XÓA TÀI KHOẢN</h2>
+					<!-- Form xóa tài khoản -->
+					<form id="delete-account-form">
+						<div class="form-group">
+							<label for="delete-account-id">Mã số tài khoản:</label>
+							<input
+								type="text"
+								id="delete-account-id"
+								placeholder="Nhập mã số tài khoản"
+								required
+							/>
+						</div>
+						<button type="submit" class="btn">Xóa tài khoản</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast Notification -->
+		<div id="toast" class="toast"></div>
+		<script src="./assets/js/admin-page.js"></script>
+	</body>
+</html>
